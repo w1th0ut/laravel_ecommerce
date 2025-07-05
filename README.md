@@ -7,55 +7,63 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Tutorial: laravel_ecommerce
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This project is a **Laravel e-commerce website** where users can *browse products* and categories, add items to a *shopping cart*, and complete purchases through a *checkout* process. It includes a *user authentication system* for managing accounts and viewing *order history*. An *admin panel*, protected by *middleware*, allows administrators to manage products, categories, and orders.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Visual Overview
 
-## Learning Laravel
+```mermaid
+flowchart TD
+    A0["Eloquent Models
+"]
+    A1["Routing
+"]
+    A2["Controllers
+"]
+    A3["Blade Views
+"]
+    A4["Authentication System
+"]
+    A5["Admin Middleware
+"]
+    A6["Cart Management (using Facade)
+"]
+    A7["E-commerce Models (Product, Category, Order, OrderItem)
+"]
+    A1 -- "Directs requests to" --> A2
+    A2 -- "Interacts with" --> A7
+    A7 -- "Extends base" --> A0
+    A4 -- "Uses User model" --> A0
+    A2 -- "Provides data for" --> A3
+    A3 -- "Displays data via" --> A6
+    A2 -- "Modifies data via" --> A6
+    A4 -- "Authenticates users for" --> A2
+    A4 -- "Provides user role to" --> A5
+    A5 -- "Protects" --> A1
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Chapters
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. [Routing
+](01_routing_.md)
+2. [Controllers
+](02_controllers_.md)
+3. [Blade Views
+](03_blade_views_.md)
+4. [Eloquent Models
+](04_eloquent_models_.md)
+5. [E-commerce Models (Product, Category, Order, OrderItem)
+](05_e_commerce_models__product__category__order__orderitem__.md)
+6. [Authentication System
+](06_authentication_system_.md)
+7. [Cart Management (using Facade)
+](07_cart_management__using_facade__.md)
+8. [Admin Middleware
+](08_admin_middleware_.md)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
+---
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
