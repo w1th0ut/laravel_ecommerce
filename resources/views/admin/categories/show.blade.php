@@ -67,7 +67,7 @@
                     @if($category->products->count() > 0)
                         @foreach($category->products as $product)
                             <div class="d-flex align-items-center mb-3">
-                                <img src="https://via.placeholder.com/50x50/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
+                                <img src="https://placehold.co/50x50/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
                                      class="rounded me-3" alt="{{ $product->name }}">
                                 <div>
                                     <h6 class="mb-1">{{ $product->name }}</h6>

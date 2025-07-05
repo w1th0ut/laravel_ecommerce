@@ -35,7 +35,7 @@
                     @endif
                 @else
                     <!-- Fallback placeholder -->
-                    <img src="https://via.placeholder.com/600x600/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
+                    <img src="https://placehold.co/600x600/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
                         class="img-fluid rounded" alt="{{ $product->name }}"
                         style="width: 100%; height: 500px; object-fit: cover;">
                 @endif
@@ -131,7 +131,7 @@
                                         class="card-img-top" alt="{{ $related->name }}"
                                         style="height: 200px; object-fit: cover;">
                                 @else
-                                    <img src="https://via.placeholder.com/300x250/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($related->name) }}" 
+                                    <img src="https://placehold.co/300x250/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($related->name) }}" 
                                         class="card-img-top" alt="{{ $related->name }}"
                                         style="height: 200px; object-fit: cover;">
                                 @endif

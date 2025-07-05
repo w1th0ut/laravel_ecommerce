@@ -54,7 +54,7 @@
                                     class="card-img-top" alt="{{ $product->name }}"
                                     style="height: 250px; object-fit: cover;">
                             @else
-                                <img src="https://via.placeholder.com/300x250/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
+                                <img src="https://placehold.co/300x250/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
                                     class="card-img-top" alt="{{ $product->name }}"
                                     style="height: 250px; object-fit: cover;">
                             @endif

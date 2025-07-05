@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <img src="https://via.placeholder.com/600x400/667eea/ffffff?text=E-Commerce" 
+                <img src="https://placehold.co/600x400/667eea/ffffff?text=E-Commerce" 
                      class="img-fluid rounded" alt="Hero Image">
             </div>
         </div>
@@ -36,7 +36,7 @@
             @forelse($categories as $category)
                 <div class="col-lg-3 col-md-6">
                     <div class="category-card position-relative">
-                        <img src="https://via.placeholder.com/300x200/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($category->name) }}" 
+                        <img src="https://placehold.co/300x200/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($category->name) }}" 
                              class="img-fluid w-100" alt="{{ $category->name }}" style="height: 200px; object-fit: cover;">
                         <div class="category-overlay">
                             <div class="text-center">
@@ -74,7 +74,7 @@
                                  class="card-img-top" alt="{{ $product->name }}"
                                  style="height: 250px; object-fit: cover;">
                         @else
-                            <img src="https://via.placeholder.com/300x250/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
+                            <img src="https://placehold.co/300x250/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
                                  class="card-img-top" alt="{{ $product->name }}"
                                  style="height: 250px; object-fit: cover;">
                         @endif
@@ -125,7 +125,7 @@
                                  class="card-img-top" alt="{{ $product->name }}"
                                  style="height: 250px; object-fit: cover;">
                         @else
-                            <img src="https://via.placeholder.com/300x250/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
+                            <img src="https://placehold.co/300x250/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
                                  class="card-img-top" alt="{{ $product->name }}"
                                  style="height: 250px; object-fit: cover;">
                         @endif

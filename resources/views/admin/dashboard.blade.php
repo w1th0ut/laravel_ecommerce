@@ -100,7 +100,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-lg-4">
+                        {{-- <div class="col-lg-4">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <i class="fas fa-chart-bar fa-3x text-info mb-3"></i>
@@ -109,7 +109,7 @@
                                     <a href="#" class="btn btn-info">View Orders</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-lg-4">
                             <div class="card">

@@ -26,7 +26,7 @@
                                                          class="img-fluid rounded" alt="{{ $item->name }}"
                                                          style="width: 100px; height: 100px; object-fit: cover;">
                                                 @else
-                                                    <img src="https://via.placeholder.com/100x100/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($item->name) }}" 
+                                                    <img src="https://placehold.co/100x100/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($item->name) }}" 
                                                          class="img-fluid rounded" alt="{{ $item->name }}"
                                                          style="width: 100px; height: 100px; object-fit: cover;">
                                                 @endif
