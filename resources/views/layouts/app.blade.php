@@ -53,7 +53,11 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ route('orders.index') }}">My Orders</a></li>
-                                <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin Panel</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><h6 class="dropdown-header">Admin Panel</h6></li>
+                                <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{ route('admin.categories.index') }}">Categories</a></li>
+                                <li><a class="dropdown-item" href="{{ route('admin.products.index') }}">Products</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
