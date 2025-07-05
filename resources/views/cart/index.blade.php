@@ -17,12 +17,26 @@
                                     <div class="cart-item">
                                         <div class="row align-items-center">
                                             <div class="col-md-2">
-                                                <img src="https://via.placeholder.com/100x100/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($item->name) }}" 
-                                                     class="img-fluid rounded" alt="{{ $item->name }}">
+                                                @php
+                                                    $product = \App\Models\Product::find($item->id);
+                                                @endphp
+                                                
+                                                @if($product && $product->images && count($product->images) > 0)
+                                                    <img src="{{ asset('storage/' . $product->images[0]) }}" 
+                                                         class="img-fluid rounded" alt="{{ $item->name }}"
+                                                         style="width: 100px; height: 100px; object-fit: cover;">
+                                                @else
+                                                    <img src="https://via.placeholder.com/100x100/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($item->name) }}" 
+                                                         class="img-fluid rounded" alt="{{ $item->name }}"
+                                                         style="width: 100px; height: 100px; object-fit: cover;">
+                                                @endif
                                             </div>
                                             <div class="col-md-4">
                                                 <h6 class="mb-1">{{ $item->name }}</h6>
                                                 <small class="text-muted">ID: {{ $item->id }}</small>
+                                                @if($product)
+                                                    <br><small class="text-muted">SKU: {{ $product->sku }}</small>
+                                                @endif
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="input-group">
@@ -30,7 +44,7 @@
                                                         @csrf
                                                         @method('PATCH')
                                                         <input type="number" name="quantity" value="{{ $item->quantity }}" 
-                                                               min="1" max="{{ $item->attributes->stock ?? 99 }}" 
+                                                               min="1" max="{{ $product->stock_quantity ?? 99 }}" 
                                                                class="form-control quantity-input">
                                                         <button type="submit" class="btn btn-outline-secondary btn-sm">Update</button>
                                                     </form>

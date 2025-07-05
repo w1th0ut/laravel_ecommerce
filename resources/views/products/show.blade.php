@@ -7,10 +7,41 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="product-images">
-                <img src="https://via.placeholder.com/600x600/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
-                     class="img-fluid rounded" alt="{{ $product->name }}">
+                @if($product->images && count($product->images) > 0)
+                    @if(count($product->images) > 1)
+                        <!-- Carousel untuk multiple images -->
+                        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @foreach($product->images as $index => $image)
+                                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                        <img src="{{ asset('storage/' . $image) }}" 
+                                            class="d-block w-100 rounded" alt="{{ $product->name }}"
+                                            style="height: 500px; object-fit: cover;">
+                                    </div>
+                                @endforeach
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
+                        </div>
+                    @else
+                        <!-- Single image -->
+                        <img src="{{ asset('storage/' . $product->images[0]) }}" 
+                            class="img-fluid rounded" alt="{{ $product->name }}"
+                            style="width: 100%; height: 500px; object-fit: cover;">
+                    @endif
+                @else
+                    <!-- Fallback placeholder -->
+                    <img src="https://via.placeholder.com/600x600/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
+                        class="img-fluid rounded" alt="{{ $product->name }}"
+                        style="width: 100%; height: 500px; object-fit: cover;">
+                @endif
             </div>
         </div>
+
         <div class="col-lg-6">
             <div class="product-details">
                 <nav aria-label="breadcrumb">
@@ -95,8 +126,15 @@
                     @foreach($relatedProducts as $related)
                         <div class="col-lg-3 col-md-6">
                             <div class="card product-card h-100">
-                                <img src="https://via.placeholder.com/300x250/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($related->name) }}" 
-                                     class="card-img-top" alt="{{ $related->name }}">
+                                @if($related->images && count($related->images) > 0)
+                                    <img src="{{ asset('storage/' . $related->images[0]) }}" 
+                                        class="card-img-top" alt="{{ $related->name }}"
+                                        style="height: 200px; object-fit: cover;">
+                                @else
+                                    <img src="https://via.placeholder.com/300x250/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($related->name) }}" 
+                                        class="card-img-top" alt="{{ $related->name }}"
+                                        style="height: 200px; object-fit: cover;">
+                                @endif
                                 <div class="card-body d-flex flex-column">
                                     <h6 class="card-title">{{ $related->name }}</h6>
                                     <div class="mt-auto">

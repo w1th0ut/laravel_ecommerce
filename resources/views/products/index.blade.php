@@ -49,8 +49,15 @@
                 @forelse($products as $product)
                     <div class="col-lg-3 col-md-6">
                         <div class="card product-card h-100">
-                            <img src="https://via.placeholder.com/300x250/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
-                                 class="card-img-top" alt="{{ $product->name }}">
+                            @if($product->images && count($product->images) > 0)
+                                <img src="{{ asset('storage/' . $product->images[0]) }}" 
+                                    class="card-img-top" alt="{{ $product->name }}"
+                                    style="height: 250px; object-fit: cover;">
+                            @else
+                                <img src="https://via.placeholder.com/300x250/{{ sprintf('%06X', mt_rand(0, 0xFFFFFF)) }}/ffffff?text={{ urlencode($product->name) }}" 
+                                    class="card-img-top" alt="{{ $product->name }}"
+                                    style="height: 250px; object-fit: cover;">
+                            @endif
                             <div class="card-body d-flex flex-column">
                                 <h6 class="card-title">{{ $product->name }}</h6>
                                 <p class="card-text text-muted small flex-grow-1">
