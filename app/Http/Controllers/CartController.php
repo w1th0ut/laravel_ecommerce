@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Darryldecode\Cart\Facades\CartFacade as Cart;
+use Cart; // Facade dari joelwmale/laravel-cart
 
 class CartController extends Controller
 {
@@ -23,17 +23,17 @@ class CartController extends Controller
             'quantity' => 'required|integer|min:1|max:' . $product->stock_quantity
         ]);
         
-        Cart::add([
-            'id' => $product->id,
-            'name' => $product->name,
-            'price' => $product->current_price,
-            'quantity' => $request->quantity,
-            'attributes' => [
+        Cart::add(
+            $product->id,                    // unique id
+            $product->name,                  // product name
+            $product->current_price,         // price
+            $request->quantity,              // quantity
+            [                               // attributes
                 'image' => $product->images[0] ?? null,
                 'slug' => $product->slug,
                 'stock' => $product->stock_quantity
             ]
-        ]);
+        );
         
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
@@ -45,10 +45,7 @@ class CartController extends Controller
         ]);
         
         Cart::update($id, [
-            'quantity' => [
-                'relative' => false,
-                'value' => $request->quantity
-            ]
+            'quantity' => $request->quantity
         ]);
         
         return redirect()->back()->with('success', 'Cart updated successfully!');

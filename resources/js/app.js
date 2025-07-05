@@ -1,7 +1,22 @@
 import './bootstrap';
 
-import Alpine from 'alpinejs';
+// Import Bootstrap JavaScript
+import 'bootstrap';
 
-window.Alpine = Alpine;
+// Custom JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
 
-Alpine.start();
+    // Cart quantity update
+    const quantityInputs = document.querySelectorAll('.quantity-input');
+    quantityInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            // Add your cart update logic here
+            console.log('Quantity changed:', this.value);
+        });
+    });
+});
