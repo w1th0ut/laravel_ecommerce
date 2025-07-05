@@ -137,6 +137,22 @@ body {
     color: white;
     padding: 3rem 0 1rem;
     margin-top: 5rem;
+
+    p {
+        color: white !important;
+    }
+    
+    ul li a {
+        color: white !important;
+        
+        &:hover {
+            color: #e2e8f0 !important;
+        }
+    }
+    
+    .text-muted {
+        color: white !important;
+    }
 }
 
 // Responsive utilities

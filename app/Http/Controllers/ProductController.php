@@ -71,17 +71,35 @@ class ProductController extends Controller
         return view('products.show', compact('product', 'relatedProducts'));
     }
     
-    public function category(Category $category)
+    public function category(Category $category, Request $request)
     {
         if (!$category->is_active) {
             abort(404);
         }
         
-        $products = Product::where('category_id', $category->id)
+        $query = Product::where('category_id', $category->id)
             ->where('is_active', true)
-            ->with('category')
-            ->paginate(12);
-            
+            ->with('category');
+        
+        // Sorting
+        $sort = $request->get('sort', 'latest');
+        switch ($sort) {
+            case 'price_low':
+                $query->orderBy('price', 'asc');
+                break;
+            case 'price_high':
+                $query->orderBy('price', 'desc');
+                break;
+            case 'name':
+                $query->orderBy('name', 'asc');
+                break;
+            default:
+                $query->latest();
+        }
+        
+        $products = $query->paginate(12);
+        
         return view('products.category', compact('category', 'products'));
     }
+
 }

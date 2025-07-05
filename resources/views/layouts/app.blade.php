@@ -131,17 +131,19 @@
                 <div class="col-lg-2 mb-4">
                     <h6>Categories</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-muted text-decoration-none">Electronics</a></li>
-                        <li><a href="#" class="text-muted text-decoration-none">Clothing</a></li>
-                        <li><a href="#" class="text-muted text-decoration-none">Books</a></li>
-                        <li><a href="#" class="text-muted text-decoration-none">Home & Garden</a></li>
+                        @php
+                            $footerCategories = \App\Models\Category::where('is_active', true)->take(4)->get();
+                        @endphp
+                        @foreach($footerCategories as $category)
+                            <li><a href="{{ route('products.category', $category->slug) }}" class="text-white text-decoration-none">{{ $category->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="col-lg-4 mb-4">
                     <h6>Contact Info</h6>
-                    <p class="text-muted mb-1">Email: info@laravelecommerce.com</p>
-                    <p class="text-muted mb-1">Phone: +1 (555) 123-4567</p>
-                    <p class="text-muted">Address: 123 E-Commerce St, Web City, WC 12345</p>
+                    <p class="text-muted mb-1">Email: bagas@student.uns.ac.id</p>
+                    <p class="text-muted mb-1">Phone: +62 857-7633-7514</p>
+                    <p class="text-muted">Address: Gang Demak 3, Jebres, Surakarta</p>
                 </div>
             </div>
             <hr class="my-4">
