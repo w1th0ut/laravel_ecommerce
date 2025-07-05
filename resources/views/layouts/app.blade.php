@@ -58,6 +58,7 @@
                                 <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="{{ route('admin.categories.index') }}">Categories</a></li>
                                 <li><a class="dropdown-item" href="{{ route('admin.products.index') }}">Products</a></li>
+                                <li><a class="dropdown-item" href="{{ route('admin.orders.index') }}">Orders</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">

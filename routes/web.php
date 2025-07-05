@@ -50,6 +50,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     
     // Product Management
     Route::resource('products', AdminProductController::class);
+    
+    // Order Management
+    Route::resource('orders', Admin\OrderController::class)->only(['index', 'show', 'update']);
 });
 
 require __DIR__.'/auth.php';

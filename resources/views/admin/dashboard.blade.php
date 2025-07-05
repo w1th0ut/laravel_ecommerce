@@ -110,6 +110,17 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-shopping-cart fa-3x text-info mb-3"></i>
+                                    <h5>Manage Orders</h5>
+                                    <p class="text-muted">View and manage customer orders</p>
+                                    <a href="{{ route('admin.orders.index') }}" class="btn btn-info">Manage Orders</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
