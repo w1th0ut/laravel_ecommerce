@@ -7,13 +7,9 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-*/
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -28,8 +24,20 @@ Route::patch('/cart/update/{id}', [CartController::class, 'update'])->name('cart
 Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::delete('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
+// Dashboard route
+Route::get('/dashboard', function () {
+    if (auth()->user()->role === 'admin') {
+        return redirect()->route('admin.dashboard');
+    }
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
     // Checkout Routes
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
@@ -40,19 +48,14 @@ Route::middleware('auth')->group(function () {
 });
 
 // Admin Routes
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {
         return view('admin.dashboard');
     })->name('dashboard');
     
-    // Category Management
     Route::resource('categories', AdminCategoryController::class);
-    
-    // Product Management
     Route::resource('products', AdminProductController::class);
-    
-    // Order Management
-    Route::resource('orders', Admin\OrderController::class)->only(['index', 'show', 'update']);
+    Route::resource('orders', AdminOrderController::class)->only(['index', 'show', 'update']);
 });
 
 require __DIR__.'/auth.php';
